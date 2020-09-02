@@ -20,7 +20,8 @@ function createWindow () {
       }
     })
     // и загружаем index.html в приложении.
-    win.loadFile('texteditor.html')
+    win.loadFile('texteditor.html');
+    win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow)
