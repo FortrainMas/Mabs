@@ -1,4 +1,5 @@
 const { app, BrowserWindow, screen } = require('electron')
+const { dialog } = require('electron')
 
 
 function createWindow () {
@@ -24,4 +25,8 @@ function createWindow () {
     win.webContents.openDevTools();
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(()=>
+  {
+    createWindow();
+  })
+

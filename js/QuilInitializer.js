@@ -2,12 +2,20 @@ var Delta = Quill.import('delta');
 var quill = new Quill('#editor', {
   modules: {
     toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'formula'],
-      ['image', 'code-block'],
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': [] }],
-  [{ 'align': [] }],
+      [{ header: [1, 2, false] }, { 'font': [] }],
+      [
+        { 'list': 'ordered'}, { 'list': 'bullet' },
+        'bold',
+        'italic',
+        'underline',
+        'strike', 
+        'formula',
+        'image',
+        'code-block',
+        { 'color': [] },
+        { 'background': [] },
+        { 'align': [] }
+      ],
     ]
   },
   placeholder: 'Compose an epic...',
@@ -40,6 +48,9 @@ setInterval(function() {
 
 setTimeout(()=>{quill.format('color', 'red', 'user');}, 5000);
 setTimeout(()=>{console.log(quill.getText(0));}, 10000);
+
+
+//window.open('https://github.com', '_blank', 'nodeIntegration=no')
 
 function saveChanges(){
   if (change.length() > 0) {
