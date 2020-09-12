@@ -1,5 +1,4 @@
-const { app, BrowserWindow, screen } = require('electron')
-const { dialog } = require('electron')
+const { app, BrowserWindow, screen, globalShortcut } = require('electron')
 
 
 function createWindow () {
@@ -20,13 +19,17 @@ function createWindow () {
         nodeIntegration: true
       }
     })
+    
     // и загружаем index.html в приложении.
     win.loadFile('texteditor.html');
     win.webContents.openDevTools();
 }
 
 app.whenReady().then(()=>
-  {
-    createWindow();
-  })
+{
+  createWindow();
+})
 
+
+
+  

@@ -1,5 +1,8 @@
-var Delta = Quill.import('delta');
-var quill = new Quill('#editor', {
+const { globalShortcut } = require('electron')
+
+let Delta = Quill.import('delta');
+
+let quill = new Quill('#editor', {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }, { 'font': [] }],
@@ -21,17 +24,13 @@ var quill = new Quill('#editor', {
   placeholder: 'Compose an epic...',
   theme: 'snow'  // or 'bubble'
 });
-if(localStorage.getItem('storedText') == true){
-  console.log(localStorage.getItem('storedText'));
 
-}else{
-  console.log("NO");
-  console.log(localStorage.getItem('storedText'));
-  const data = JSON.parse(localStorage.getItem('storedText'));
-  quill.setContents(data);
-}
 
-var change = new Delta();
+
+initialize();
+
+
+let change = new Delta();
 quill.on('text-change', function(delta) {
   change = change.compose(delta);
   console.log(change);
@@ -50,7 +49,21 @@ setTimeout(()=>{quill.format('color', 'red', 'user');}, 5000);
 setTimeout(()=>{console.log(quill.getText(0));}, 10000);
 
 
-//window.open('https://github.com', '_blank', 'nodeIntegration=no')
+function initialize(){
+  loadData();
+  saveShortcut();
+}
+
+//Set data to the quiple 
+function loadData(){
+  if(localStorage.getItem('storedText') == true){
+    console.log(localStorage.getItem('storedText'));
+  }else{
+    console.log(localStorage.getItem('storedText'));
+    const data = JSON.parse(localStorage.getItem('storedText'));
+    quill.setContents(data);
+  }
+}
 
 function saveChanges(){
   if (change.length() > 0) {
@@ -60,4 +73,13 @@ function saveChanges(){
     localStorage.setItem('storedText', data);
     change = new Delta();
   }
+}
+
+function saveShortcut(){
+  window.addEventListener('keyup', (event)=>{
+    console.log("Lenin")
+    if( event.key == "s" & (event.ctrlKey || event.metaKey)){
+      saveChanges();
+    }
+  }, true)
 }
