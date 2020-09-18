@@ -11,7 +11,6 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-
 // и загружаем index.html в приложении.
   win.loadFile('index.html')
 }

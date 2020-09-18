@@ -20,7 +20,7 @@
 }
 
 .files{
-    width: 25%;
+    width: 27%;
     border-radius: 5px;
     background-color: #28134E;
     color: white;
@@ -37,4 +37,15 @@
     border-top-left-radius: 0px;
     height: 96%;
     padding-top: 1%;
+}
+
+.inFolderFile{
+    color: white;
+    width: 96%;
+    margin: 3px;
+    background-color: #322B67;
+    border-radius: 5px;
+    padding: 1px;
+    cursor: pointer;
+    padding-left: 15px;
 }
