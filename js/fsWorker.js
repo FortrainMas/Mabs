@@ -1,11 +1,10 @@
 const config = require('config');
 const fs = require('fs').promises;
-const stuff = require('./QuillWorker');
 
 
 //This function should be called in the start of programm and it will initialize all proceceses that should be initialized in fsWorker
 //This function should be called in global initializer.
-function initializeCurrentFolder(){
+export function initializeCurrentFolder(){
     const conspectFolderName = document.getElementById("conspect_folder")
     const conspectName = getCurrentConspectName();
     conspectFolderName.innerHTML = conspectName;
