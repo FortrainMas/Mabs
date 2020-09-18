@@ -9,7 +9,7 @@ function initializeCurrentFolder(){
     const conspectFolderName = document.getElementById("conspect_folder")
     const conspectName = getCurrentConspectName();
     conspectFolderName.innerHTML = conspectName;
-    console.log(stuff);
+    //console.log(stuff);
     setInFolderFiles();
 }
 
