@@ -1,4 +1,4 @@
-const { globalShortcut } = require('electron')
+
 
 let Delta = Quill.import('delta');
 
@@ -65,10 +65,15 @@ function loadData(){
   }
 }
 
-function saveChanges(){
+function saveChanges(isInitial){
+  if(isInitial){
+    const st = window.open('./popups/SaveFile.html', "", "width=200,height=100, fullscreen=no");
+  }
+
   if (change.length() > 0) {
     // Save the entire updated text to localStorage
     const data = JSON.stringify(quill.getContents())
+    //console.log(data);
     localStorage.setItem('storedText', data);
     change = new Delta();
   }
@@ -76,8 +81,13 @@ function saveChanges(){
 
 function saveShortcut(){
   window.addEventListener('keyup', (event)=>{
-    if( event.key == "s" & (event.ctrlKey || event.metaKey)){
-      saveChanges();
+    console.log('stuff')
+    if( event.key == "s" && (event.ctrlKey || event.metaKey)){
+      //console.log('non stuff')
+      saveChanges(true);
+    }else{
+      //console.log(event.key);
+      //console.log(event.ctrlKey);
     }
   }, true)
 }
