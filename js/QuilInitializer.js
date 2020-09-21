@@ -67,7 +67,6 @@ function loadData(){
 
 function saveChanges(){
   if (change.length() > 0) {
-    console.log('Saving changes', change);
     // Save the entire updated text to localStorage
     const data = JSON.stringify(quill.getContents())
     localStorage.setItem('storedText', data);
@@ -77,7 +76,6 @@ function saveChanges(){
 
 function saveShortcut(){
   window.addEventListener('keyup', (event)=>{
-    console.log("Lenin")
     if( event.key == "s" & (event.ctrlKey || event.metaKey)){
       saveChanges();
     }

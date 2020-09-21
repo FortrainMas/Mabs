@@ -1,14 +1,13 @@
 const config = require('config');
 const fs = require('fs').promises;
 
-
 //This function should be called in the start of programm and it will initialize all proceceses that should be initialized in fsWorker
 //This function should be called in global initializer.
 export function initializeCurrentFolder(){
     const conspectFolderName = document.getElementById("conspect_folder")
     const conspectName = getCurrentConspectName();
     conspectFolderName.innerHTML = conspectName;
-    //console.log(stuff);
+    //SetFileToQuill();
     setInFolderFiles();
 }
 
@@ -20,7 +19,7 @@ function getCurrentConspectName(){
     return folderName;
 }
 
-
+//Visualise files in folder
 async function setInFolderFiles(){
     const stuff = await searchFilesInFolder(config.get('currentConspectFolder'));
     console.log(stuff);
