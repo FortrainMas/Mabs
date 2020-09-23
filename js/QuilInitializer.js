@@ -67,7 +67,7 @@ function loadData(){
 
 function saveChanges(isInitial){
   if(isInitial){
-    const st = window.open('./popups/SaveFile.html', "", "width=200,height=100, fullscreen=no");
+    const st = window.open('./popups/SaveFile.html', "", "width=90vw, height=100, fullscreen=no, frame = false");
   }
 
   if (change.length() > 0) {
